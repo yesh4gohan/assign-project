@@ -26,7 +26,23 @@ export const deleteRepo = (name,id) => async dispatch => {
   
   let repoCopy;
   Array.isArray(repos)?repoCopy = [...repos]:repoCopy = [].concat(repos);
-
+  //1.if the API was working for delete and post requests 
+  /*
+  let newRepo = [];
+  repo = axios
+  .delete(`https://api.github.com/users/mojombo/repos/${repoIId}`)
+  .then(res =>{
+    axios
+    .get(`https://api.github.com/users/mojombo/repos/)
+    .then(res=>{
+      newRepo = res.data;
+    })
+  })
+dispatch({
+    type:DELETE_USER_REPO,
+    payload:newRepo
+  })
+  */
   let newRepo = repoCopy.filter((rep)=> (rep.id !== id));
   dispatch({
     type:DELETE_USER_REPO,
@@ -38,6 +54,29 @@ export const deleteRepo = (name,id) => async dispatch => {
 export const editRepo = (username,editObj,id) => async dispatch => {
   const repos = await getUserRepos(username);
   let repoCopy;
+  //if the API was working for delete and post requests 
+  /*
+  let newRepo = [];
+  let repoToBeEdited = {};
+  axios
+  .get(`https://api.github.com/users/mojombo/repos/${repoIId}`)
+  .then(res =>{
+      repoToBeEdited  = {...res.data};
+      repoToBeEdited.name = editObj.name;
+      repoToBeEdited.description = editObj.desc;
+      repoToBeEdited.language = editObj.language;
+      axios.post(`https://api.github.com/users/mojombo/repos/${repoIId}`,repoToBeEdited)
+      .then(()=>{
+        axios get
+        put it to newRepo
+      })
+    })
+  })
+  dispatch({
+    type:DELETE_USER_REPO,
+    payload:newRepo
+  })
+  */
   Array.isArray(repos)?repoCopy = [...repos]:repoCopy = [].concat(repos);
   let repoToBeEdited = {...repoCopy.filter((rep)=> (rep.id === id))[0]};
   repoToBeEdited.name = editObj.name;
