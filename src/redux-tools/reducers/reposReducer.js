@@ -1,5 +1,4 @@
-import {SET_USER_REPO} from '../actions/actionTypes';
-
+import {SET_USER_REPO,EDIT_USER_REPO,DELETE_USER_REPO} from '../actions/actionTypes';
  const initialState = {
 
  };
@@ -11,7 +10,16 @@ import {SET_USER_REPO} from '../actions/actionTypes';
          ...state,
          repos:action.payload
        }
-   
+       case DELETE_USER_REPO:
+       return {
+         ...state,
+         repos:action.payload
+       }
+       case EDIT_USER_REPO:
+       return {
+        ...state,
+        repos:action.payload
+      }
      default:
        return state;
    }

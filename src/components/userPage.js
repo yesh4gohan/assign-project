@@ -46,6 +46,7 @@ class UserPage extends React.Component {
     await this.props.deleteRepo(repo.owner.login, repo.id);
     alert("successfully deleted");
   };
+
   render() {
     const { classes, repos } = this.props;
     {
@@ -61,7 +62,7 @@ class UserPage extends React.Component {
           <Grid container spacing={24}>
             {repos.map((repo, index) => {
               return (
-                <Grid item xs={12} sm={6} key={index}>
+                <Grid container item xs={12} sm={6} key={index}>
                   <Paper className={classes.paper}>
                     <Card
                       className={classes.card}

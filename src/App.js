@@ -8,11 +8,13 @@ import {
 import SearchBar from "./components/searchBar";
 import UserPage from "./components/userPage";
 import SingleRepo from './components/singleRepo';
+import AppNavBar from "./components/appNavBar";
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="App">
+          <AppNavBar/>
           <div className="container">
             <Switch>
               <Route exact path="/" component={SearchBar} />

@@ -92,6 +92,7 @@ class SearchAppBar extends React.Component {
         justify="center"
         style={{ minHeight: "100vh" }}
       >
+        <h2 style = {{"color":"green"}}>Welcome Please enter a username to search repos</h2>
         <Grid className={classes.search}>
           <div className={classes.searchIcon}>
             <SearchIcon />

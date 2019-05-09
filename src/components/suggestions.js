@@ -24,7 +24,6 @@ class SuggestionBox extends React.Component {
     this.props.history.push('/user');
   }
   render() {
-    console.log(this.props);
     const { classes } = this.props;
     const { suggestions, notFound } = this.props;
     return suggestions.length ? (

@@ -1,5 +1,5 @@
 import {getAllUsers,getUserRepos} from '../../api/apiCallHandler';
-import {SET_ALL_USERS,SET_USER_REPO} from './actionTypes';
+import {SET_ALL_USERS,SET_USER_REPO,EDIT_USER_REPO,DELETE_USER_REPO} from './actionTypes';
 
 export const setAllUsers = () => async dispatch => {
   const users = await getAllUsers();
@@ -29,7 +29,24 @@ export const deleteRepo = (name,id) => async dispatch => {
 
   let newRepo = repoCopy.filter((rep)=> (rep.id !== id));
   dispatch({
-    type:SET_USER_REPO,
+    type:DELETE_USER_REPO,
+    payload:newRepo
+  })
+}
+
+
+export const editRepo = (username,editObj,id) => async dispatch => {
+  const repos = await getUserRepos(username);
+  let repoCopy;
+  Array.isArray(repos)?repoCopy = [...repos]:repoCopy = [].concat(repos);
+  let repoToBeEdited = {...repoCopy.filter((rep)=> (rep.id === id))[0]};
+  repoToBeEdited.name = editObj.name;
+  repoToBeEdited.description = editObj.desc;
+  repoToBeEdited.language = editObj.language;
+  let newRepo = repoCopy.filter((rep)=> (rep.id !== id));
+  newRepo.unshift(repoToBeEdited);
+  dispatch({
+    type:EDIT_USER_REPO,
     payload:newRepo
   })
 }

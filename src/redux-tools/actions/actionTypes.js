@@ -1,2 +1,4 @@
 export const SET_ALL_USERS = "SET_ALL_USERS";
 export const SET_USER_REPO = "SET_USER_REPO";
+export const DELETE_USER_REPO = "DELETE_USER_REPO";
+export const EDIT_USER_REPO = "EDIT_USER_REPO";
