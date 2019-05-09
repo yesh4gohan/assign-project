@@ -13,3 +13,4 @@ export const getUserRepos = name => {
   .then(response => (response.data))
   .catch(err => console.log(err))
 }
+
